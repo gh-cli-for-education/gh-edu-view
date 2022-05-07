@@ -1,0 +1,23 @@
+{
+  "name": "gh-edu-view",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "gh-edu-view.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gh-cli-for-education/gh-edu-view.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gh-cli-for-education/gh-edu-view/issues"
+  },
+  "homepage": "https://github.com/gh-cli-for-education/gh-edu-view#readme",
+  "dependencies": {
+    "commander": "^9.2.0"
+  }
+}
