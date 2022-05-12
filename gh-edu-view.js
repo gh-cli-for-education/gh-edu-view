@@ -1,17 +1,16 @@
 import { program } from 'commander'
-/** _dirname doesnt work with modules */
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import members from './commands/members.js'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-/***/
-// import { config } from __dirname + '/../'
-
-console.log(__dirname);
+/** Load configuration */
+import fs from 'fs'
+const stringConfig = fs.readFileSync(process.cwd() + "/../gh-edu/config.json", { encoding: "utf8", flag: "r" })
+const config = JSON.parse(stringConfig);
+/** END loadConfig */
 program
-    .command("users")
-    .action(() => {
-      console.log("Hola");
+    .command("members")
+    .option("-q --quit", "Don't show any log or warning information. The result will be printed anyway")
+    .option("-r, --id", "Regex to find posible member identifier. For example alu0101204512")
+    .action((options) => {
+      members(config, options);
     })
 program.parse();
