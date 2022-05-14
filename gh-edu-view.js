@@ -1,9 +1,17 @@
 import { program } from 'commander'
 import members from './commands/members.js'
 
+/** _dirname doesnt work with modules */
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+/***/
+
 /** Load configuration */
 import fs from 'fs'
-const stringConfig = fs.readFileSync(process.cwd() + "/../gh-edu/config.json", { encoding: "utf8", flag: "r" })
+const stringConfig = fs.readFileSync(__dirname + "/../gh-edu/config.json", { encoding: "utf8", flag: "r" })
 const config = JSON.parse(stringConfig);
 /** END loadConfig */
 program
