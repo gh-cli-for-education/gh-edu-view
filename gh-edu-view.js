@@ -1,5 +1,5 @@
 import { program } from 'commander'
-import members from './commands/members.js'
+import members from './members/members.js'
 
 /** _dirname doesnt work with modules */
 import { fileURLToPath } from 'url';

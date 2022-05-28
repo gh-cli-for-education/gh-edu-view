@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gh-cli-for-education/gh-edu-view#readme",
   "dependencies": {
-    "commander": "^9.2.0"
+    "commander": "^9.2.0",
+    "shelljs": "^0.8.5"
   }
 }
