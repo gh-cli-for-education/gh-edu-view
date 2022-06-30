@@ -2,9 +2,9 @@
 import * as utils from '../utils/utils.js';
 
 /** Load configuration */
-import fs from 'fs'
-const stringConfig = fs.readFileSync(process.cwd() + "/../gh-edu/config.json", { encoding: "utf8", flag: "r" })
-const config = JSON.parse(stringConfig);
+// import fs from 'fs'
+// const stringConfig = fs.readFileSync(process.cwd() + "/../gh-edu/config.json", { encoding: "utf8", flag: "r" })
+// const config = JSON.parse(stringConfig);
 /** END loadConfig */
 
 const query = (org) => `
@@ -52,15 +52,14 @@ function getPosibleID(data, identifierR) {
   return posiblesID;
 }
 
-export default async function members({ identifierR }, options) {
+export default async function members(config, options) {
   if (!config.defaultOrg) {
     console.error("Please set a org as default to work with");
     return;
   }
   let { data: { organization: { membersWithRole: { nodes: result } } } } = JSON.parse(utils.executeQuery(query(config.defaultOrg)));
-  let posibleID;
-  if (identifierR) {
-    posibleID = getPosibleID(result, identifierR);
+  if (config.identifierR || options.id) {
+    const posibleID = getPosibleID(result, options.id || config.identifierR);
     for (const [index, member] of result.entries()) {
       console.log({ ...member, posibleID: posibleID[index] });
     }
