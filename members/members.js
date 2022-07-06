@@ -1,12 +1,6 @@
 //@ts-check
 import * as utils from '../utils/utils.js';
 
-/** Load configuration */
-// import fs from 'fs'
-// const stringConfig = fs.readFileSync(process.cwd() + "/../gh-edu/config.json", { encoding: "utf8", flag: "r" })
-// const config = JSON.parse(stringConfig);
-/** END loadConfig */
-
 const query = (org) => `
   query ($endCursor: String) {
   organization(login: "${org}") {

@@ -1,5 +1,6 @@
 import { program } from 'commander'
 import members from './members/members.js'
+import { homedir } from 'os'
 
 /** _dirname doesnt work with modules */
 import { fileURLToPath } from 'url';
@@ -8,7 +9,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /***/
-const configPath = path.join(__dirname, "..", "gh-edu", "data", "data.json");
+const configDir = path.join(homedir(), ".config", "gh-edu");
+const configPath = path.join(configDir, "data.json");
+// const configPath = path.join(__dirname, "..", "gh-edu", "data", "data.json");
 /** Load configuration */
 import fs from 'fs'
 const stringConfig = fs.readFileSync(configPath, { encoding: "utf8" })
